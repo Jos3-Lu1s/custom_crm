@@ -2,10 +2,15 @@
 {
     'name': "Custom CRM",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Personalizaciones en formularios y kanban de CRM Leads",
 
     'description': """
-Long description of module's purpose
+    
+Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
+
+- Añade los campos **Comisión** y **Comisión Anual** en la vista kanban.
+- Oculta el campo *Probabilidad* y varios elementos de la interfaz en el formulario de leads.
+
     """,
 
     'author': "Tekuno",
@@ -24,11 +29,15 @@ Long description of module's purpose
     'data': [
         # 'security/ir.model.access.csv',
         'views/crm_lead_kanban_inherit.xml',
+        'views/crm_lead_form_inherit.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
     "license": "LGPL-3",
+    'installable': True,
+    'application': False,
+    'auto_install': False,
 }
 
