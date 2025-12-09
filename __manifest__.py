@@ -23,7 +23,7 @@ Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['crm','zhm_crm'],
+    'depends': ['base','crm','zhm_crm','contacts'],
 
     # always loaded
     'data': [
@@ -31,6 +31,8 @@ Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
         'views/crm_lead_kanban_inherit.xml',
         'views/crm_lead_form_inherit.xml',
         'views/crm_lead_tree_inherit.xml',
+        'views/crm_search_lead_inherit.xml',
+        'views/res_partner_kanban_inherit.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
