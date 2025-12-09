@@ -13,7 +13,7 @@
 
           <filter name="area_patrimoniales"
                   string="Patrimoniales"
-                  domain="[('area_id.n ame', '=', 'Patrimoniales')]"/>
+                  domain="[('area_id.name', '=', 'Patrimoniales')]"/>
           <filter name="area_financieros"
                   string="Financieros"
                   domain="[('area_id.name', '=', 'Financieros')]"/>
