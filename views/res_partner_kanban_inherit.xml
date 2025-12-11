@@ -9,9 +9,18 @@
 
            <!-- 1) Agregar campo al dataset -->
         <xpath expr="//field[@name='email']" position="after">
+        <t t-if="!record.is_company.raw_value and record.birthdate.raw_value">
           <div>
+            <span><i style="color: #b972a6;" class="fa fa-fw me-2 fa-birthday-cake" title="Birthday"/>: </span>
             <field name="birthdate"/>
           </div>
+        </t>
+        <t t-elif="record.is_company.raw_value and record.constitution_date.raw_value">
+            <div>
+            <span class="fw-bold">Constitution Date: </span>
+            <field name="constitution_date"/>
+          </div>
+          </t>
         </xpath>
 
 

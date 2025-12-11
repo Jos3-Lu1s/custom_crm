@@ -32,7 +32,7 @@ Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
         'views/crm_lead_form_inherit.xml',
         'views/crm_lead_tree_inherit.xml',
         'views/crm_search_lead_inherit.xml',
-        'views/res_partner_kanban_inherit.xml',
+        'views/res_partner_form_inherit.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
