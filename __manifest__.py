@@ -26,12 +26,18 @@ Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
     'depends': ['crm','zhm_crm'],
 
     # always loaded
-    'data': [
-        # 'security/ir.model.access.csv',
-        'views/crm_lead_kanban_inherit.xml',
-        'views/crm_lead_form_inherit.xml',
-        'views/crm_lead_tree_inherit.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "views/crm_lead_form_inherit.xml",
+        "views/crm_lead_kanban_inherit.xml",
+        "views/crm_lead_tree_inherit.xml",
+        "wizards/crm_lead_wizard.xml",
     ],
+    'assets':{
+        'web.assets_backend':[
+            'custom_crm/static/src/**/*',
+        ],
+    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
