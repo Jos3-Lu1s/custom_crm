@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- View crm_buttons_inherit tree -->
+  <record id="view_crm_buttons_inherit_tree" model="ir.ui.view">
+    <field name="name">view.crm_buttons_inherit.tree</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+    <field name="arch" type="xml">
+      <xpath expr="//list" position="attributes">
+        <attribute name="js_class">crm_lead_list</attribute>
+      </xpath>
+    </field>
+  </record>
+  
+  <record id="view_crm_buttons_inherit_kanban" model="ir.ui.view">
+    <field name="name">view.crm_buttons_inherit.kanban</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+    <field name="arch" type="xml">
+      <xpath expr="//kanban" position="attributes">
+        <attribute name="js_class">crm_lead_kanban</attribute>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>
