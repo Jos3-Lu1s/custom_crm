@@ -2,8 +2,8 @@
 <templates xml:space="preserve">
     <t t-name="custom_crm.KanbanView.Buttons" t-inherit="web.KanbanView.Buttons">
         <xpath expr="//div[hasclass('o_cp_buttons')]" position="inside">
-            <button type='button' class='btn btn-primary' t-on-click='leadsOptions'>
-                Nuevo boton
+            <button type='button' class='btn btn-secondary' t-on-click='leadsOptions'>
+                Reintentar
             </button>
         </xpath>
     </t>

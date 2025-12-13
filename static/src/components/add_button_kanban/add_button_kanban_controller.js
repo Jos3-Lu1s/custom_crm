@@ -8,7 +8,7 @@ export class AddButtonKanbanController extends KanbanController {
     leadsOptions(){
         this.actionService.doAction({
             type:'ir.actions.act_window',
-            name:'lost leads',
+            name:'Reintentar oportunidades perdidas',
             res_model: 'crm.lead.wizard',
             view_mode:'form',
             view_type:'form',
