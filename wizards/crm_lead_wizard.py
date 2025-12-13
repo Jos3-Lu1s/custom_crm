@@ -14,11 +14,19 @@ class CrmLeadWizard(models.TransientModel):
     fecha_fin = fields.Date(string='Fecha de fin', required=True)
 
     def action_print_excel_report(self):
+        stage_id = int(self.env['ir.config_parameter'].sudo().get_param('crm.lost_stage_id', default=0))
+        stage = self.env['crm.stage'].browse(stage_id)
+
+        print("-------------------------------------")
+        print(stage.name)
+        print(stage_id)
+
         domain = [
             ('type', '=', 'opportunity'),
             # ('won_status', '=', 'lost'),
-            ('create_date', '>=', self.fecha_inicio),
-            ('create_date', '<=', self.fecha_fin),
+            ('stage_id', '=', stage_id),
+            ('date_last_stage_update', '>=', self.fecha_inicio),
+            ('date_last_stage_update', '<=', self.fecha_fin),
         ]
         oportunidades = self.env['crm.lead'].search(domain)
 
