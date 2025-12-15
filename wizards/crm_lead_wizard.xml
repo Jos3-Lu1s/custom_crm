@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View crm.lead.wizard form -->
+    <record id="view_crm_lead_wizard_form" model="ir.ui.view">
+        <field name="name">view.crm.lead.wizard.form</field>
+        <field name="model">crm.lead.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Crm Lead Wizard">
+                <group>
+                    <field name="modo_operacion" widget="radio"/>
+                </group>
+                <group invisible="modo_operacion != 'exportar'">
+                    <field name="fecha_inicio" placeholder="DD/MM/AAAA"/>
+                    <field name="fecha_fin" placeholder="DD/MM/AAAA"/>
+                </group>
+                <group invisible="modo_operacion != 'importar'">
+                    <field name="archivo" widget="binary"/>
+                </group>
+                <footer>
+                    <button name="action_generar" type="object" string="Generar" class="oe_highlight"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action crm.lead.wizard -->
+    <record id="action_crm_lead_wizard" model="ir.actions.act_window">
+        <field name="name">Crm Lead Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.lead.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="binding_model_id" ref="crm.model_crm_lead"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
