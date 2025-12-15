@@ -23,9 +23,10 @@ Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['crm','zhm_crm'],
+    'depends': ['base','crm','zhm_crm','contacts'],
 
     # always loaded
+
     "data": [
         "security/ir.model.access.csv",
         "views/crm_buttons_inherit_views.xml",
@@ -35,7 +36,10 @@ Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
         "views/crm_lead_tree_inherit.xml",
         "views/res_config_settings_views.xml",
         "wizards/crm_lead_wizard.xml"
+        'views/crm_search_lead_inherit.xml',
+        'views/res_partner_form_inherit.xml',
     ],
+
     'assets':{
         'web.assets_backend':[
             'custom_crm/static/src/**/*',
