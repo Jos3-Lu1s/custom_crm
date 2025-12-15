@@ -85,7 +85,7 @@ class CrmLeadWizard(models.TransientModel):
             'Vendedor',
             'Area',
             'Etapa',
-            'Fecha creación',
+            'Fecha vencimiento',
             'Intentar de nuevo',
             'Nuevo vencimiento',
         ]
@@ -103,7 +103,7 @@ class CrmLeadWizard(models.TransientModel):
             worksheet.write(row, 4, lead.user_id.name or '')
             worksheet.write(row, 5, lead.area_id.name or '')
             worksheet.write(row, 6, lead.stage_id.name or '')
-            worksheet.write(row, 7, lead.create_date, date_format)
+            worksheet.write(row, 7, lead.date_deadline, date_format)
             worksheet.write(row, 8, 'No')
             worksheet.write(row, 9, '')
             row += 1
