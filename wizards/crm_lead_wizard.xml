@@ -8,11 +8,17 @@
         <field name="arch" type="xml">
             <form string="Crm Lead Wizard">
                 <group>
+                    <field name="modo_operacion" widget="radio"/>
+                </group>
+                <group invisible="modo_operacion != 'exportar'">
                     <field name="fecha_inicio" placeholder="DD/MM/AAAA"/>
                     <field name="fecha_fin" placeholder="DD/MM/AAAA"/>
                 </group>
+                <group invisible="modo_operacion != 'importar'">
+                    <field name="archivo" widget="binary"/>
+                </group>
                 <footer>
-                    <button name="action_print_excel_report" type="object" string="Generar Excel" class="oe_highlight"/>
+                    <button name="action_generar" type="object" string="Generar" class="oe_highlight"/>
                     <button special="cancel" string="Cancel"/>
                 </footer>
             </form>
