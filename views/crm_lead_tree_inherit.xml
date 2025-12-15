@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="crm_lead_tree_show_hide_fields_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.tree.show_hide.fields.inherit</field>
+        <field name="model">crm.lead</field>
+
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pending_days_char']" position="replace"/>
+        </field>
+    </record>
+</odoo>
