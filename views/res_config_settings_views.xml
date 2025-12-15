@@ -10,6 +10,9 @@
                     <setting help="Selecciona la etapa que representa una oportunidad perdida.">
                         <field name="crm_lost_stage_id"/>
                     </setting>
+                    <setting help="Selecciona la etapa de reintento de las oportunidades.">
+                        <field name="crm_retry_stage_id"/>
+                    </setting>
                 </block>
             </xpath>
         </field>
