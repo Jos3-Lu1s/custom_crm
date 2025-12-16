@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-  <!-- View crm_buttons_inherit tree -->
+  <!-- Hereda las vistas tipo lista y kanban de oportunidades y agrega un JS personalizado--> 
+  <!-- La vista heredada se encuentra en: addons\crm\views\crm_lead_views.xml-->
   <record id="view_crm_buttons_inherit_tree" model="ir.ui.view">
     <field name="name">view.crm_buttons_inherit.tree</field>
     <field name="model">crm.lead</field>

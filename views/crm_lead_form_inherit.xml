@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!-- Hereda el formulario de oportunidades (crm.lead) y oculta campos específicos -->
+<!-- La vista original se encuentra en: addons\crm\views\crm_lead_views.xml -->
     <record id="crm_lead_form_hide_field_inherit" model="ir.ui.view">
         <field name="name">crm.lead.form.hide.field.inherit</field>
         <field name="model">crm.lead</field>

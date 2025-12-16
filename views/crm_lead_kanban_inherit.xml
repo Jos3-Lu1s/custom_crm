@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+<!-- Hereda la vista Kanban de oportunidades (crm.lead) y agrega campos de comisión -->
+<!-- La vista original se encuentra en: addons\crm\views\crm_lead_views.xml -->
     <record id="crm_lead_kanban_add_field_inherit" model="ir.ui.view">
         <field name="name">crm.lead.kanban.add.field.inherit</field>
         <field name="model">crm.lead</field>
@@ -8,10 +10,9 @@
 
         <field name="arch" type="xml">
             <xpath expr="//field[@name='expected_revenue']" position="after">
-                <div>
+                <div class="d-flex gap-1">
                     <span>Comisión: </span>
-                    <field name="estimated_commission"/>
-                    <span>%</span>
+                    <field name="estimated_commission" widget="percentage"/>
                 </div>
                 <div>
                     <span>Comisión Anual: </span>

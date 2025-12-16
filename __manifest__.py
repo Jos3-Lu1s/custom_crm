@@ -30,7 +30,6 @@ Este módulo realiza las siguientes personalizaciones en los **Leads de CRM**:
     "data": [
         "security/ir.model.access.csv",
         "views/crm_buttons_inherit_views.xml",
-        "views/crm_buttons_inherit_views.xml",
         "views/crm_lead_form_inherit.xml",
         "views/crm_lead_kanban_inherit.xml",
         "views/crm_lead_tree_inherit.xml",

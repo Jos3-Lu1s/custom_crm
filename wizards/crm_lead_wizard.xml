@@ -6,7 +6,7 @@
         <field name="name">view.crm.lead.wizard.form</field>
         <field name="model">crm.lead.wizard</field>
         <field name="arch" type="xml">
-            <form string="Crm Lead Wizard">
+            <form string="Reintentar oportunidades">
                 <group>
                     <field name="modo_operacion" widget="radio"/>
                 </group>
@@ -27,7 +27,7 @@
 
     <!-- Action crm.lead.wizard -->
     <record id="action_crm_lead_wizard" model="ir.actions.act_window">
-        <field name="name">Crm Lead Wizard</field>
+        <field name="name">Reintentar oportunidades</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">crm.lead.wizard</field>
         <field name="view_mode">form</field>

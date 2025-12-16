@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Agrega un botón personalizado llamado “Reintentar” en la barra de botones de la vista de lista de crm.lead. -->
+<!-- Template heredado ubicado en: addons\web\static\src\views\list\list_controller.xml -->
 <templates xml:space="preserve">
     <t t-name="custom_crm.ListView.Buttons" t-inherit='web.ListView.Buttons'>
         <xpath expr="//div[contains(@class, 'o_list_buttons')]" position="inside">

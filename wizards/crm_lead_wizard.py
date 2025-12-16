@@ -25,6 +25,11 @@ class CrmLeadWizard(models.TransientModel):
     def action_generar(self):
         # Ejecuta la acción del wizard según el modo (exportar o importar).
         if self.modo_operacion == 'exportar':
+            if self.fecha_inicio and self.fecha_fin and self.fecha_inicio > self.fecha_fin:
+                raise UserError(
+                    'La fecha de inicio no puede ser mayor que la fecha de fin.'
+                )
+
             stage_id = int(self.env['ir.config_parameter'].sudo().get_param('crm.lost_stage_id', default=0))
             stage = self.env['crm.stage'].browse(stage_id)
 
@@ -75,6 +80,14 @@ class CrmLeadWizard(models.TransientModel):
         # Formatos
         header_format = workbook.add_format({'bold': True})
         date_format = workbook.add_format({'num_format': 'dd/mm/yyyy'})
+        editable_header_format = workbook.add_format({
+            'bold': True,
+            'bg_color': '#D9D9D9',
+        })
+
+        editable_cell_format = workbook.add_format({
+            'bg_color': '#F2F2F2', 
+        })
 
         # Encabezados
         headers = [
@@ -91,7 +104,25 @@ class CrmLeadWizard(models.TransientModel):
         ]
 
         for col, header in enumerate(headers):
-            worksheet.write(0, col, header, header_format)
+            if header in ('Intentar de nuevo', 'Nuevo vencimiento'):
+                worksheet.write(0, col, header, editable_header_format)
+            else:
+                worksheet.write(0, col, header, header_format)
+
+        intentar_col = headers.index('Intentar de nuevo')
+        nuevo_venc_col = headers.index('Nuevo vencimiento')
+
+        worksheet.set_column(intentar_col, intentar_col, 18, editable_cell_format)
+        worksheet.set_column(nuevo_venc_col, nuevo_venc_col, 18, editable_cell_format)
+
+        worksheet.write_comment(
+            0, intentar_col,
+            'Solo estas columnas deben ser modificadas'
+        )
+        worksheet.write_comment(
+            0, nuevo_venc_col,
+            'Solo estas columnas deben ser modificadas'
+        )
 
         # Datos
         row = 1
@@ -211,17 +242,30 @@ class CrmLeadWizard(models.TransientModel):
         stage_id = int(self.env['ir.config_parameter'].sudo().get_param('crm.retry_stage_id', default=0))
         stage = self.env['crm.stage'].browse(stage_id)
 
-        oportunidades = self.env['crm.lead'].browse(ids.keys())
-
-        new_leads = self.env['crm.lead']
-
         if not stage.exists():
             raise UserError(
                 "La etapa de reintento configurada no existe.\n"
                 "Por favor, configure una etapa válida en la configuración del módulo CRM antes de continuar."
             )
 
+        oportunidades = self.env['crm.lead'].browse(ids.keys())
+
+        # Filtramos oportunidades activas y no perdidas
+        oportunidades_validas = self.env['crm.lead']
         for lead in oportunidades:
+            if lead.active:
+                oportunidades_validas += lead
+
+        if not oportunidades_validas:
+            raise UserError(
+                "Oportunidades ignoradas\n"
+                "Ninguna oportunidad estaba activa. No se realizará ninguna acción."
+            )
+
+        new_leads = self.env['crm.lead']
+
+
+        for lead in oportunidades_validas:
             nueva_fecha = ids.get(lead.id)
             new_lead = lead.copy(default={
                 'stage_id': stage.id,
@@ -229,6 +273,6 @@ class CrmLeadWizard(models.TransientModel):
             })
             new_leads += new_lead
 
-        self.marcar_perdidas(oportunidades.ids)
+        self.marcar_perdidas(oportunidades_validas.ids)
 
         return new_leads

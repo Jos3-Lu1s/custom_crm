@@ -1,21 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!-- Hereda el formulario de res.partner y ajusta la visibilidad del campo 'constitution_date' -->
+<!-- La vista original se encuentra en: modules\zhm_crm\views\res_partner.xml -->
   <data>
-
     <record id="custom_res_partner_form" model="ir.ui.view">
       <field name="name">res.partner.form</field>
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="zhm_crm.view_partner_form_catalog_extended"/>
       <field name="arch" type="xml">
-
-           <!-- 1) Agregar campo al dataset -->
          <xpath expr="//field[@name='constitution_date']" position="replace"/>
          <xpath expr="//field[@name='vat']" position="after">
           <field name="constitution_date" invisible="company_type != 'company'"/>
         </xpath>
-
-
       </field>
     </record>
-
   </data>
 </odoo>

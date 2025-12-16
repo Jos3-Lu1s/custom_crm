@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!-- Hereda la vista de configuración del CRM y agrega opciones para reintentos de oportunidades -->
+<!-- La vista original se encuentra en: addons\crm\views\res_config_settings_views.xml -->
     <record id="view_res_config_settings_form" model="ir.ui.view">
         <field name="name">res.config.settings.crm.custom</field>
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="crm.res_config_settings_view_form"/>
         <field name="arch" type="xml">
+        <!-- Agrega un bloque de configuración para definir etapas de oportunidad perdida y de reintento -->
             <xpath expr="//app[@name='crm']/block[last()]" position="after">
                 <block title="Configuración de Reintentos CRM">
                     <setting help="Selecciona la etapa que representa una oportunidad perdida.">

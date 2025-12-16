@@ -7,6 +7,10 @@ export class AddButtonListController extends ListController {
     super.setup();
   }
 
+  /**
+   * Función que se ejecuta al hacer clic en el botón "Reintentar".
+   * Abre un wizard para reintentar oportunidades perdidas.
+   */
   leadsOptions() {
     this.actionService.doAction({
       type: "ir.actions.act_window",
